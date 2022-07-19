@@ -17,7 +17,7 @@ app.get("/api", async (req, res) => {
 
 	for (let i of files) {
 		output.push({
-			title: i.substring(i.lastIndexOf(".")),
+			title: i.substring(0, i.lastIndexOf(".")),
 			path: `https://stream.aidanliddy.com/stream/${i}`,
 		});
 	}
