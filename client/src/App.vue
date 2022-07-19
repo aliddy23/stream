@@ -12,9 +12,13 @@
     <v-main>
       <v-container style="max-width: 1185px">
         <v-list>
-          <v-list-item v-for="item in movies" :key="item.url">{{
-            item
-          }}</v-list-item>
+          <v-list-item
+            v-for="item in movies"
+            :key="item.url"
+            @click="open(item.path)"
+          >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
         </v-list>
       </v-container>
     </v-main>
@@ -33,6 +37,11 @@ export default {
     axios.get("/api").then((response) => {
       this.movies = response.data;
     });
+  },
+  methods: {
+    open(path) {
+      window.open(path);
+    },
   },
 };
 </script>
